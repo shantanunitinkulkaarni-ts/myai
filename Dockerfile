@@ -1,13 +1,15 @@
 FROM node:20-bullseye-slim
 
-# Install git and other necessary tools including curl, python3
+# Install git, curl, gnupg, and apt-transport-https
 RUN apt-get update && apt-get install -y \
-    git curl python3 \
+    git curl python3 apt-transport-https ca-certificates gnupg \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Google Cloud SDK so the MyAI tool can use gcloud commands
-RUN curl -sSL https://sdk.cloud.google.com | bash -s -- --install-dir=/opt --disable-prompts
-ENV PATH=$PATH:/opt/google-cloud-sdk/bin
+# Add Google Cloud SDK repository and install
+RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list \
+    && curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add - \
+    && apt-get update && apt-get install -y google-cloud-cli \
+    && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
