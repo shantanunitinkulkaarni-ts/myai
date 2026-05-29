@@ -376,7 +376,7 @@ app.get("/api/health", async (_req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`Personal coder tool running on http://localhost:${port}`);
+app.listen(port, "0.0.0.0", () => {
+  console.log(`Personal coder tool running on http://0.0.0.0:${port}`);
   console.log(`Workspace: ${workspaceDir}`);
 });

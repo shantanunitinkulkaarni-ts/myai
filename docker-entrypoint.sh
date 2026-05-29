@@ -4,8 +4,7 @@ set -e
 # Configure git credentials if GITHUB_TOKEN is provided
 if [ -n "$GITHUB_TOKEN" ]; then
   echo "Configuring git credentials..."
-  git config --global credential.helper store
-  echo "https://${GITHUB_TOKEN}:x-oauth-basic@github.com" > ~/.git-credentials
+  git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
   git config --global user.email "bot@myai.com"
   git config --global user.name "MyAI Bot"
 fi
