@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Personal Coder Tool</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <header>
+        <h1>Personal Coder Tool</h1>
+        <p id="workspaceInfo">Loading workspace...</p>
+      </header>
+
+      <section class="easy-panel">
+        <h2>For non-developers</h2>
+        <p id="readyStatus">Checking if your computer is ready to publish...</p>
+        <div class="easy-actions">
+          <button type="button" id="checkApp" class="secondary">Check my app (free)</button>
+          <button type="button" id="checkReady" class="secondary">Check publish readiness</button>
+          <button type="button" id="saveGithub" class="primary">Save changes to GitHub</button>
+          <button type="button" id="publishGoogle" class="primary">Publish to Google Cloud</button>
+        </div>
+      </section>
+
+      <section class="toolbar">
+        <button type="button" id="quickStatus">See what changed (Git)</button>
+        <button type="button" id="clearChat">Clear chat</button>
+      </section>
+
+      <section class="controls">
+        <label>
+          Task mode
+          <select id="mode">
+            <option value="code" selected>Code</option>
+            <option value="plan">Plan / Architecture</option>
+            <option value="debug">Troubleshoot</option>
+          </select>
+        </label>
+        <label>
+          Override model (optional)
+          <input id="overrideModel" placeholder="anthropic/claude-3.5-haiku" />
+        </label>
+        <label class="checkbox">
+          <input type="checkbox" id="forceSonnet" />
+          Force Sonnet (costly)
+        </label>
+      </section>
+
+      <p class="tip">Chat in plain English for coding tasks. Example: "Add a logout button on dashboard". Saving mode is ON.</p>
+
+      <section id="chat" class="chat"></section>
+      <section id="approvalBox" class="approval hidden"></section>
+
+      <form id="chatForm" class="composer">
+        <textarea id="message" rows="4" placeholder="Example: Add login API route and wire frontend form"></textarea>
+        <button type="submit" id="sendBtn">Send</button>
+      </form>
+    </main>
+    <script src="/app.js"></script>
+  </body>
+</html>
