@@ -1,0 +1,33 @@
+# LeadNest — MyAI Project Config
+# This file is auto-loaded by MyAI to give the AI context about your project
+
+project: LeadNest
+description: CRM and lead management application
+stack:
+  frontend: Next.js, TypeScript, Tailwind CSS
+  backend: Next.js API routes
+  database: Supabase (PostgreSQL)
+  auth: Supabase Auth
+  deployment: Google Cloud Run
+  registry: gcr.io/gen-lang-client-0794202345/leadnest
+
+repo: https://github.com/shantanunitinkulkaarni-ts/claude-leadnest
+branch: main
+
+conventions:
+  - Use TypeScript strictly
+  - Components go in /components
+  - API routes go in /app/api
+  - Keep files under 200 lines
+  - Use Tailwind for styling
+
+current_focus:
+  - Write what you are currently working on here
+
+env_vars:
+  - NEXT_PUBLIC_SUPABASE_URL
+  - NEXT_PUBLIC_SUPABASE_ANON_KEY
+  - ANTHROPIC_API_KEY
+
+notes:
+  - Add any notes for the AI here
